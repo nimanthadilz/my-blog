@@ -24,7 +24,7 @@ User query:
 
 > Tell me about the stock information of 789789?
 
-Inventory Agent Response:
+Inventory agent Response:
 
 > We have 159 items in stock of 789789 product. There is a pending delivery of another 500 items expected to be delivered on 18th August 2026.
 
@@ -68,9 +68,9 @@ Even though in step 3 we get a humanized answer, we are not using it directly. W
 
 ## How to solve?
 
-> [!NOTE] Why not update the inventory agent to return the answer in the format required by the Chat Application?
+> [!NOTE] Why not update the inventory agent to return the answer in the format required by the chat application?
 >
-> This tightly couples the inventory agent to the client application. What happens if another client application wants a different format from the Inventory Agent?
+> This tightly couples the inventory agent to the client application. What happens if another client application wants a different format from the inventory agent?
 
 We need to first understand one thing. Most of these agents built by teams inside a company are not supposed to be used alone. At some point the requirement will arise to integrate this into one or more client applications to benefit end users.
 
