@@ -64,7 +64,7 @@ Even though in step 3 we get a humanized answer, we are not using it directly. W
 
 - Adds to the latency, degrading the user experience
 
-- Costs money by burning more tokens
+- Increases LLM token cost
 
 - Meaning could be lost easily (structured data -> humanized response 1 -> humanized response 2 flow)
 
