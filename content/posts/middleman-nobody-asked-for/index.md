@@ -2,6 +2,7 @@
 date = '2026-07-27T12:00:14+05:30'
 draft = false
 title = 'The Middleman Nobody Asked For: Cutting Out Redundant LLM Calls'
+tags = ["ai", "agents", "programming"]
 +++
 
 > [!question] TLDR
