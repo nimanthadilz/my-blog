@@ -94,6 +94,6 @@ I think most teams face this issue because they fall into the trap of blindly fo
 
 I think many teams prefer the 1st statement over the 2nd because they get to demo an AI agent returning a nice humanized answer.
 
-Please note that I am not against people building AI agents. My only concern is many teams building agents which could have been a reusable set of tools for other agents.
+Please note that I am not against people building AI agents. My only concern is many teams build agents, which could have been a reusable set of tools for other agents.
 
 On a final note, all of this boils down to using the right tool for the right task.
