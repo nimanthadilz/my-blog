@@ -1,6 +1,6 @@
 +++
 date = '2026-05-31T19:08:23+05:30'
-draft = false
+draft = true
 title = 'ADK Dynamic Parallel Agents'
 tags = ["programming", "agents", "adk"]
 +++
