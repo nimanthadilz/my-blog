@@ -58,7 +58,7 @@ Based on the requirements, the chat application team comes up with the following
 
 If you look closely, there is a redundant step in the above design.
 
-Even though in step 3 we get a humanized answer, we are not using it. We need to make another LLM call (#4) to format the chat application's final answer according to the app's needs.
+Even though in step 3 we get a humanized answer, we are not using it directly. We need to make another LLM call (#4) to format the chat application's final answer according to the app's needs.
 
 ## Why is this a problem?
 
@@ -80,7 +80,7 @@ At that point, we would notice that most client applications have their own orch
 
 I believe that "Building an Agent" for exposing domain-specific data that those teams have is not the right solution. Ideally, it should be a set of tools—an MCP server.
 
-An MCP server can expose a set of tools for accessing the information internal to that team/vertical. Each client application would call those tools to get data and format the final answer however they want.
+An MCP server can expose a set of tools for accessing the information internal to that team/vertical. Each client application would call those tools to get raw structured data and format the final answer however they want.
 
 ![Proposed Solution](./sol_diagram.png "Proposed Solution")
 
@@ -94,6 +94,6 @@ I think most teams face this issue because they fall into the trap of blindly fo
 
 I think many teams prefer the 1st statement over the 2nd because they get to demo an AI agent returning a nice humanized answer.
 
-Ideally, the technical leadership should steer domain teams not to build fancy agents returning humanized answers but to build tools that act as a data/action layer that powers actual agents/client applications.
+Please note that I am not against people building AI agents. My only concern is many teams building agents which could have been a reusable set of tools for other agents.
 
 On a final note, all of this boils down to using the right tool for the right task.
