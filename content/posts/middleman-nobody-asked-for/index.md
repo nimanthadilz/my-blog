@@ -6,9 +6,7 @@ tags = ["ai", "agents", "programming"]
 +++
 
 > [!question] TLDR
-> Many AI agent-based applications suffer from redundant LLM calls because they generate humanized answers that are then discarded or reformatted. This increases latency, costs & risks losing meaning.
->
-> As a solution, the article proposes building tools instead of agents.
+> Many AI agent-based applications suffer from redundant LLM calls because when one agent requests information from another agent, first agent has to extract information from the second agent's humanized response and generate a new response. As a solution, the article proposes building reusable tools instead of agents when suitable.
 
 Let me introduce the problem of redundant LLM calls happening in AI agent applications using an example.
 
@@ -52,7 +50,7 @@ Based on the requirements, the chat application team comes up with the following
 
 5. The chat application's final answer agent generates an answer using the inventory agent response according to the product team's requirements. (LLM Call #4)
 
-![Sequence Diagram](./sequence_diagram.png "Sequence Diagram")
+![Design with redundant LLM calls](./sequence_diagram_1.png "Design with redundant LLM calls")
 
 ## Problem: Redundant LLM calls
 
@@ -66,7 +64,7 @@ Even though in step 3 we get a humanized answer, we are not using it directly. W
 
 - Increases LLM token cost
 
-- Meaning could be lost easily (structured data -> humanized response 1 -> humanized response 2 flow)
+- Meaning could be lost easily during redundant translation steps (structured data -> humanized response 1 -> humanized response 2 flow)
 
 ## How to solve?
 
@@ -78,11 +76,13 @@ We need to first understand one thing. Most of these agents built by teams insid
 
 At that point, we would notice that most client applications have their own orchestration and final answer generation layers.
 
-I believe that "Building an Agent" for exposing domain-specific data that those teams have is not the right solution. Ideally, it should be a set of tools—an MCP server.
+I believe that "Building an Agent" for exposing domain-specific data that those teams have is not the right solution. Ideally, it should be a set of tools—an [MCP](https://modelcontextprotocol.io/) server.
 
 An MCP server can expose a set of tools for accessing the information internal to that team/vertical. Each client application would call those tools to get raw structured data and format the final answer however they want.
 
 ![Proposed Solution](./sol_diagram.png "Proposed Solution")
+
+![Design using an MCP server](./sequence_diagram_2.png "Design using an MCP server")
 
 ## Hype around Agents vs. Building Tools
 
@@ -94,6 +94,6 @@ I think most teams face this issue because they fall into the trap of blindly fo
 
 I think many teams prefer the 1st statement over the 2nd because they get to demo an AI agent returning a nice humanized answer.
 
-Please note that I am not against people building AI agents. My only concern is many teams build agents, which could have been a reusable set of tools for other agents.
+To be clear: building AI agents isn't the problem. The problem is building agents where tools would suffice.
 
 On a final note, all of this boils down to using the right tool for the right task.
